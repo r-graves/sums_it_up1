@@ -11,11 +11,13 @@ def sel_date(df1b):
     #select timestamps in my timestamp range
     df2 = df1b.loc['2022-04-01 04:00:00':'2022-05-01 05:00:00']
     #keep only the fields i want
-    df2 = df1b[['start','end','date_char']]
+    #df2 = df1b[['start','end','date_char']]
+    df2 = df1b
     # convert datetime column to just date
     df2['date_char'] = pd.to_datetime(df2['date_char']).dt.date
+    print(df2)
     #sum up by date
-    df3 = df2.groupby(by=['date_time','date_char'], sort=True).agg({'start':'sum','start':'avg','end':'sum'})
+    df3 = df2.groupby(by=['date_time','date_char'], sort=True).agg({'start':'sum','end':'sum'})
     return df3
 
 returned_frame = sel_date(df1)
