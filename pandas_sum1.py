@@ -15,7 +15,7 @@ def sel_date(df1b):
     # convert datetime column to just date
     df2['date_char'] = pd.to_datetime(df2['date_char']).dt.date
     #sum up by date
-    df3 = df2.groupby(by=['date_time','date_char'], sort=True).agg({'start':'sum','end':'sum'})
+    df3 = df2.groupby(by=['date_time','date_char'], sort=True).agg({'start':'sum','start':'avg','end':'sum'})
     return df3
 
 returned_frame = sel_date(df1)
