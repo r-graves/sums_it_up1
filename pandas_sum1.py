@@ -17,8 +17,12 @@ def sel_date(df1b):
     df2['date_char'] = pd.to_datetime(df2['date_char']).dt.date
     print(df2)
     #sum up by date
-    df3 = df2.groupby(by=['date_time','date_char'], sort=True).agg({'start':'sum','end':'sum'})
-    return df3
+    df3 = df2.groupby(by=['date_char'], sort=True).agg({'start':'sum','end':'sum'})
+    #maximize by date
+    df4 = df2.groupby(by=['date_char'], sort=True).agg({'start':'max','end':'max'})
+    #pull the two together
+    df5 = pd.concat([df3, df4], axis=1)
+    return df5
 
 returned_frame = sel_date(df1)
 
