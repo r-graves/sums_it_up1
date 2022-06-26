@@ -1,11 +1,9 @@
 import pandas as pd
 
 ticker=["AAPL","AMZN","MSFT"]
-#ticker=['AAPL']
-column_names = ['date_time','start','end', 'p1','p2','Exchange Number','timeframe','ticker_symbol']
 timeframes = ['1min','5min','30min','1hour']
 cn2 = ['date_time','start','end', 'p1','p2','Exchange Number']
-df = pd.DataFrame(columns= column_names)
+df = pd.DataFrame()
 for i in ticker:
     for j in timeframes:
         #read in the csv
