@@ -37,5 +37,7 @@ def write_csv(tk):
     of.to_csv(out_path)
     print(out_path)
 
-for i in ticker:
+#get the unique ticker values out of the dataframe
+ticker2 = df.ticker_symbol.unique()
+for i in ticker2:
     write_csv(i)
