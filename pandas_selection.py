@@ -25,8 +25,17 @@ msft = df.loc[df['ticker_symbol'] == 'MSFT']
 sum_200 = msft.loc[msft['Exchange Number'] == 200, 'p1'].sum()
 sum_200b = msft.loc[(msft['Exchange Number'] == 200) & (msft['timeframe'] == '1min'), 'p1'].sum()
 sum_200c = msft.loc[(msft['Exchange Number'] == 200) & (msft['timeframe'] == '1hour'), 'p1'].sum()
-print(sum_200)
-print(sum_200b)
-print(sum_200c)
-print(df)
+#print(sum_200)
+##print(sum_200b)
+#print(sum_200c)
+#print(df)
 
+#as an aditional step, I will now write the dataframe out to varous csvs depending on the ticker
+def write_csv(tk):
+    of = df.loc[df['ticker_symbol'] == tk]
+    out_path = './outputs/'+i+'.csv'
+    of.to_csv(out_path)
+    print(out_path)
+
+for i in ticker:
+    write_csv(i)
