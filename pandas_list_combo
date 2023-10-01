@@ -1,0 +1,33 @@
+import pandas as pd
+
+cust_dept_sales={'customer_id': [101,101,101,102,102,103,104,104,104,105],
+    'department':['shoe','apparel','acc','shoe','app','app','shoe','apparel','acc','shoe'],
+    'sales':[200, 300, 150,400,500,100,200,500,400,200]}
+df=pd.DataFrame(cust_dept_sales)
+print(df)
+
+#sum up all the sales
+sums = df.groupby('customer_id')['sales'].sum()
+
+#get customer with the highest sales
+
+
+print(sums)
+print('top customer')
+print(sums.nlargest(1))
+print(sums.nlargest(2))
+
+#make this a function
+print('make a function')
+def fun2(sums):
+    i = 0
+    while i < 3:
+        print(sums.nlargest(i))
+        i = i + 1
+
+
+fun2(sums)
+#sample codes that I used are below from stackoverflow
+#top_10_sales = sales_data.nlargest(10, 'Sales')
+#means = df.groupby('group')['value'].mean()
+#df['mean_value'] = df['group'].map(means)
